@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/register_user_link"
-        android:text="New User? Register Here"
+        android:text="Already Register? Login Here"
         android:layout_marginTop="80dp"
         android:textColor="@color/white"
         android:textSize="16sp"
