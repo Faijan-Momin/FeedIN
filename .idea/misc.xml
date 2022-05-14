@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/drawable/primary_button.xml" value="0.25277777777777777" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_login.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_register_as.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/tu.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/vinay/StudioProjects/FeedIN/app/src/main/res/layout/activity_login.xml" value="0.19293478260869565" />
+        <entry key="..\:/Users/vinay/StudioProjects/FeedIN/app/src/main/res/layout/activity_main.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/vinay/StudioProjects/FeedIN/app/src/main/res/layout/activity_register_as.xml" value="0.264" />
+        <entry key="..\:/Users/vinay/StudioProjects/FeedIN/app/src/main/res/layout/activity_signup.xml" value="0.10989583333333333" />
       </map>
     </option>
   </component>
