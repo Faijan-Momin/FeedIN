@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                                 new java.util.TimerTask() {
                                     @Override
                                     public void run() {
-                                        Intent intent = new Intent(getApplicationContext(), Login_activity.class);
+                                        Intent intent = new Intent(getApplicationContext(), Register_As_Activity.class);
                                         startActivity( intent ); }
                                 },
                                 1000

@@ -11,7 +11,7 @@
         android:theme="@style/Theme.FeedIN">
         <activity
             android:name=".Register_As_Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Signup_Activity"
             android:exported="false" />
