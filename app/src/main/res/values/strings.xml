@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FeedIN</string>
+    <string name="slide">SLIDE</string>
+
 </resources>
