@@ -10,6 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FeedIN">
         <activity
+            android:name=".Dashboard_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Forgot_Password_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Register_As_Ngo_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Register_As_Volunteer_Activity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Register_As_Donor_Activity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".Register_As_Activity"
             android:exported="false" />
         <activity

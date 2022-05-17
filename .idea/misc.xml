@@ -3,11 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/drawable/card_shape_round.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/drawable/cornor_image_border.xml" value="0.26205128205128203" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/drawable/primary_button.xml" value="0.25277777777777777" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/drawable/rating_bg.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_dashboard.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_forgot_password.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_register_as.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_register_as.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_register_as_donor.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_register_as_ngo.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_register_as_volunteer.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/ngo_card_layout.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/ngo_food_card.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/FeedIN/app/src/main/res/layout/tu.xml" value="0.23052536231884058" />
       </map>
     </option>
