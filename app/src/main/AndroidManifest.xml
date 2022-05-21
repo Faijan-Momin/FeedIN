@@ -10,7 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FeedIN">
         <activity
-            android:name=".Dashboard_Activity"
+            android:name=".Donate_Food_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Accepted_Donation_Details"
+            android:exported="false" />
+        <activity
+            android:name=".Loading_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Donation_Details_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Donor_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".NGO_Dashboard_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Volunteer_Dashboard_Activity"
             android:exported="false" />
         <activity
             android:name=".Forgot_Password_Activity"

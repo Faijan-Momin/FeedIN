@@ -51,40 +51,32 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/donor_name_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans_semibold"
+                        android:gravity="center_vertical"
+                        android:text="Donated By"
+                        android:textColor="@color/FontSecondaryColor"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/donor_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
                         android:fontFamily="@font/nunito_sans_semibold"
-                        android:gravity="center_vertical"
                         android:text="Faijan Momin"
                         android:textColor="@color/FontColor"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="0dp"
-                        android:background="@drawable/rating_bg"
-                        android:drawableRight="@drawable/rating_star"
-                        android:drawablePadding="5dp"
-                        android:fontFamily="@font/nunito_sans_semibold"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:paddingTop="2dp"
-                        android:paddingBottom="2dp"
-                        android:text="4.0"
-                        android:textColor="@color/white" />
-                </RelativeLayout>
+
+                </LinearLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -115,6 +107,32 @@
                         android:textColor="@color/FontSecondaryColor" />
                 </RelativeLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/donor_date_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_sans_semibold"
+                        android:gravity="center_vertical"
+                        android:text="Donated By"
+                        android:textColor="@color/FontSecondaryColor"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/donated_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="12 Jan 2022  | 1.05 PM"
+                        android:textColor="@color/FontSecondaryColor" />
+
+
+                </LinearLayout>
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
@@ -123,13 +141,7 @@
                     android:text="1.2 km from your location"
                     android:textColor="@color/FontSecondaryColor" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Best before 5 hrs"
-                    android:textColor="@color/FontSecondaryColor" />
+
             </LinearLayout>
         </LinearLayout>
 

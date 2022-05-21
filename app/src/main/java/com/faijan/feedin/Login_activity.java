@@ -2,12 +2,9 @@ package com.faijan.feedin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,7 +40,7 @@ public class Login_activity extends AppCompatActivity {
         login_btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent loginAction =  new Intent(getApplication(), Dashboard_Activity.class);
+                Intent loginAction =  new Intent(getApplication(), Donate_Food_Activity.class);
                 startActivity( loginAction );
             }
         } );
