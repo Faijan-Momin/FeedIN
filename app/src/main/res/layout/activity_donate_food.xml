@@ -119,9 +119,10 @@
                         android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:ems="10"
-                        android:inputType="numberDecimal"
+                        android:id="@+id/chapati"
+                        android:inputType="numberSigned"
                         android:textSize="22dp"
-                        android:hint="0.00"
+                        android:hint="0"
                         android:textAlignment="center"
                         android:textColor="@color/FontSecondaryColor"
                         android:textColorHint="@color/FontSecondaryColor"
@@ -186,6 +187,7 @@
                         android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:ems="10"
+                        android:id="@+id/dry_bhaji"
                         android:inputType="numberDecimal"
                         android:textSize="22dp"
                         android:hint="0.00"
@@ -252,6 +254,7 @@
                         android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:ems="10"
+                        android:id="@+id/wet_bhaji"
                         android:inputType="numberDecimal"
                         android:textSize="22dp"
                         android:hint="0.00"
@@ -318,6 +321,7 @@
                         android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:ems="10"
+                        android:id="@+id/rice"
                         android:inputType="numberDecimal"
                         android:textSize="22dp"
                         android:hint="0.00"
@@ -413,6 +417,7 @@
                     android:gravity="center">
 
                     <TextView
+                        android:id="@+id/textView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -425,11 +430,24 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
 
+                    <TextView
+                        android:id="@+id/image_selected_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:fontFamily="@font/nunito_sans"
+                        android:text=""
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView7"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <android.widget.Button
                         android:layout_width="wrap_content"
                         android:layout_height="55dp"
                         android:background="@drawable/primary_button"
                         android:fontFamily="@font/nunito_sans"
+                        android:id="@+id/choose_image_btn"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="18dp"
@@ -452,21 +470,16 @@
 
             </LinearLayout>
 
-
+            <android.widget.Button
+                android:id="@+id/donate_food_btn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/primary_button"
+                android:text="Donate Food  🤍️" />
 
         </LinearLayout>
 
     </ScrollView>
-
-    <android.widget.Button
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="90dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/primary_button"
-        android:text="Donate Food  🤍️" />
 
 </RelativeLayout>

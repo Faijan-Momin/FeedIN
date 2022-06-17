@@ -17,12 +17,13 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_btn"
             app:srcCompat= "@drawable/arrow_back"
             android:contentDescription="BackButton"
+            android:background="@color/PrimaryColor"
             tools:ignore="InvalidId" />
 
         <ImageView
@@ -76,18 +77,19 @@
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
+
             <EditText
-                android:id="@+id/donor_name"
+                android:id="@+id/volunteer_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
+                android:autofillHints="name"
                 android:contextClickable="false"
                 android:fontFamily="@font/nunito_sans"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,11 +103,12 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_email"
+                android:id="@+id/volunteer_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
+                android:autofillHints="emailAddress"
                 android:contextClickable="false"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textEmailAddress"
@@ -125,14 +128,15 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_mobile"
+                android:id="@+id/volunteer_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="phoneNumberDevice"
                 android:fontFamily="@font/nunito_sans"
-                android:inputType="phone"
+                android:inputType="phone|numberSigned"
                 android:isScrollContainer="true"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -149,7 +153,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_password"
+                android:id="@+id/volunteer_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -173,7 +177,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_confirm_password"
+                android:id="@+id/volunteer_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -192,7 +196,7 @@
     </ScrollView>
 
     <android.widget.Button
-        android:id="@+id/login_btn"
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="15dp"

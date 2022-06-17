@@ -34,6 +34,7 @@ public class Register_As_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent donorRegisteration =  new Intent(getApplication(), Register_As_Donor_Activity.class);
                 startActivity( donorRegisteration );
+                finish();
             }
         } );
 
@@ -45,6 +46,7 @@ public class Register_As_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent volunteerRegisteration =  new Intent(getApplication(), Register_As_Volunteer_Activity.class);
                 startActivity( volunteerRegisteration );
+                finish();
             }
         } );
 
@@ -56,6 +58,7 @@ public class Register_As_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent ngoRegisteration =  new Intent(getApplication(), Register_As_Ngo_Activity.class);
                 startActivity( ngoRegisteration );
+                finish();
             }
         } );
 
@@ -67,8 +70,16 @@ public class Register_As_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registeredUser =  new Intent(getApplication(), Login_activity.class);
                 startActivity( registeredUser );
+                finish();
             }
         } );
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent RegisterAsintent = new Intent(Register_As_Activity.this, Login_activity.class);
+        startActivity( RegisterAsintent );
+        finish();
     }
 }

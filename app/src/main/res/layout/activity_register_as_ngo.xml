@@ -17,10 +17,11 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_btn"
+            android:background="@color/PrimaryColor"
             app:srcCompat= "@drawable/arrow_back"
             android:contentDescription="BackButton"
             tools:ignore="InvalidId" />
@@ -77,14 +78,15 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_name"
+                android:id="@+id/ngo_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="name"
                 android:fontFamily="@font/nunito_sans"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -101,12 +103,13 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_email"
+                android:id="@+id/ngo_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="emailAddress"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textEmailAddress"
                 android:isScrollContainer="true"
@@ -125,14 +128,15 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_mobile"
+                android:id="@+id/ngo_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="phoneNumberDevice"
                 android:fontFamily="@font/nunito_sans"
-                android:inputType="phone"
+                android:inputType="phone|number"
                 android:isScrollContainer="true"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -149,12 +153,13 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_password"
+                android:id="@+id/ngo_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="password"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textPassword"
                 android:isScrollContainer="true"
@@ -173,12 +178,13 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_confirm_password"
+                android:id="@+id/ngo_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="password"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textPassword"
                 android:isScrollContainer="true"
@@ -197,12 +203,13 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_address"
+                android:id="@+id/ngo_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="postalAddress"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textPostalAddress"
                 android:isScrollContainer="true"
@@ -222,7 +229,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/donor_org_name"
+                android:id="@+id/ngo_org_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -255,7 +262,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/donor_org_crt"
+                    android:id="@+id/ngo_org_crt"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -263,7 +270,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_toStartOf="@+id/certificate_btn"
+                    android:layout_toStartOf="@+id/certificate_upload_btn"
                     android:backgroundTint="@color/white"
                     android:fontFamily="@font/nunito_sans"
                     android:inputType="text"
@@ -271,7 +278,7 @@
                     android:textSize="18sp" />
 
                 <android.widget.Button
-                    android:id="@+id/certificate_btn"
+                    android:id="@+id/certificate_upload_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -286,7 +293,7 @@
             </RelativeLayout>
 
             <android.widget.Button
-                android:id="@+id/login_btn"
+                android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="15dp"

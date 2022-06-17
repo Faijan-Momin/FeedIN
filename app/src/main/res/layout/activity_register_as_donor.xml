@@ -17,11 +17,12 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back_btn"
             app:srcCompat= "@drawable/arrow_back"
+            android:background="@color/PrimaryColor"
             android:contentDescription="BackButton"
             tools:ignore="InvalidId" />
 
@@ -83,8 +84,9 @@
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="name"
                 android:fontFamily="@font/nunito_sans"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -107,6 +109,7 @@
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="emailAddress"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textEmailAddress"
                 android:isScrollContainer="true"
@@ -131,8 +134,9 @@
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="phoneNumberDevice"
                 android:fontFamily="@font/nunito_sans"
-                android:inputType="phone"
+                android:inputType="phone|number"
                 android:isScrollContainer="true"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -155,6 +159,7 @@
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="password"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textPassword"
                 android:isScrollContainer="true"
@@ -179,6 +184,7 @@
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="password"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textPassword"
                 android:isScrollContainer="true"
@@ -203,6 +209,7 @@
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/white"
                 android:contextClickable="false"
+                android:autofillHints="postalAddress"
                 android:fontFamily="@font/nunito_sans"
                 android:inputType="textPostalAddress"
                 android:isScrollContainer="true"
@@ -215,7 +222,7 @@
     </ScrollView>
 
     <android.widget.Button
-        android:id="@+id/login_btn"
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="15dp"

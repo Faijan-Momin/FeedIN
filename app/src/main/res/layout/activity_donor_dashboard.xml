@@ -44,7 +44,7 @@
                 app:srcCompat="@drawable/arrow_back" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/user_name"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="16dp"
@@ -73,11 +73,11 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navbar" />
+        android:layout_above="@+id/bottom_navbar_donor" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navbar"
+        android:id="@+id/bottom_navbar_donor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

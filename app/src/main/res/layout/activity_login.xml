@@ -42,14 +42,17 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:id="@+id/login_email"
         android:layout_marginTop="5dp"
         android:backgroundTint="@color/white"
+        android:background="@drawable/white_radius_bgs"
         android:contextClickable="false"
         android:fontFamily="@font/nunito_sans"
         android:inputType="textEmailAddress"
-        android:textColor="@color/white"
+        android:textColor="@color/FontColor"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textSize="18sp" />
     <TextView
         android:layout_width="wrap_content"
@@ -62,15 +65,21 @@
         android:fontFamily="@font/nunito_sans"/>
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/white_radius_bgs"
         android:backgroundTint="@color/white"
         android:contextClickable="false"
         android:fontFamily="@font/nunito_sans"
         android:inputType="textPassword"
-        android:textColor="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:password="true"
+        android:textColor="@color/FontColor"
+        android:textColorHighlight="@color/PrimaryColor"
+        android:textColorLink="@color/PrimaryColor"
         android:textSize="18sp" />
 
 
