@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -241,8 +243,35 @@ public class Donation_Details_Activity extends AppCompatActivity {
                                         Toast.makeText( Donation_Details_Activity.this, "Requested UnSuccesfull... Please try again....", Toast.LENGTH_SHORT ).show();
                                     }
                                 } );
+                    }else {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Donation_Details_Activity.this);
+                        alertDialogBuilder.setMessage( "Food Already Requested!");
+                        alertDialogBuilder.setPositiveButton("Ok",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface arg0, int arg1) {
+
+                                        finish();
+                                    }
+                                });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
                     }
                 }
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Donation_Details_Activity.this);
+                alertDialogBuilder.setMessage( "Error Occured on Server-Side");
+                alertDialogBuilder.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+//                           Intent intent = new Intent(Register_As_Donor_Activity.this, Register_As_Activity.class);
+                                finish();
+//                           startActivity(getIntent());
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
 //
             }
         } );
