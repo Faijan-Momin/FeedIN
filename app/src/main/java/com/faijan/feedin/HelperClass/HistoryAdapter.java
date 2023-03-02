@@ -89,8 +89,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.FoodCard
 
 //            Hooks
 
-
-
             food_card_img = itemView.findViewById( R.id.food_card_img );
             donor_name = itemView.findViewById( R.id.donor_name );
             request_status_tag = itemView.findViewById( R.id.request_status_tag );
