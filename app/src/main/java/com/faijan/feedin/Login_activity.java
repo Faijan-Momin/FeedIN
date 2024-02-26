@@ -204,9 +204,9 @@ public class Login_activity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
 
-//                                                                    Intent intent = new Intent(Register_As_Donor_Activity.this, Register_As_Activity.class);
-//                                                                    finish();
-//                                                                    startActivity(getIntent());
+//                                    Intent intent = new Intent(Register_As_Donor_Activity.this, Register_As_Activity.class);
+//                                    finish();
+//                                    startActivity(getIntent());
                                 }
                             });
                     AlertDialog alertDialog = alertDialogBuilder.create();

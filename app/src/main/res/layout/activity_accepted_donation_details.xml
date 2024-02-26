@@ -93,6 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,7 +216,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:elevation="2dp"
                     android:orientation="horizontal">
@@ -248,6 +249,49 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/call_icon"
+                        app:tint="@color/request_btn_bg" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1"
+                    android:elevation="2dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|center_horizontal|center_vertical"
+                        android:fontFamily="@font/nunito_sans_bold"
+                        android:gravity="center_horizontal|center_vertical|center"
+                        android:text="Navigate in Maps"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/FontSecondaryColor"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/mapsButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center|center_horizontal|center_vertical"
+                        android:background="@drawable/circle_call_bg"
+                        android:foregroundTint="@color/FontSecondaryColor"
+                        android:padding="9dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/maps_logo"
                         app:tint="@color/request_btn_bg" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

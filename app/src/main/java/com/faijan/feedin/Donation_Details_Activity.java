@@ -257,21 +257,22 @@ public class Donation_Details_Activity extends AppCompatActivity {
                         AlertDialog alertDialog = alertDialogBuilder.create();
                         alertDialog.show();
                     }
-                }
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Donation_Details_Activity.this);
-                alertDialogBuilder.setMessage( "Error Occured on Server-Side");
-                alertDialogBuilder.setPositiveButton("Ok",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
+                }else{
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Donation_Details_Activity.this);
+                    alertDialogBuilder.setMessage( "Error Occured on Server-Side");
+                    alertDialogBuilder.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface arg0, int arg1) {
 
 //                           Intent intent = new Intent(Register_As_Donor_Activity.this, Register_As_Activity.class);
-                                finish();
+                                    finish();
 //                           startActivity(getIntent());
-                            }
-                        });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                                }
+                            });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
 //
             }
         } );

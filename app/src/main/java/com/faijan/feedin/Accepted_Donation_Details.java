@@ -2,6 +2,7 @@ package com.faijan.feedin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -51,14 +52,13 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 public class Accepted_Donation_Details extends AppCompatActivity {
 
-    ImageView call_donor_btn;
+    ImageView call_donor_btn,mapsButton;
     MapView maps_view;
     Bundle extras;
 
     Button collect_donation_btn;
 
     String user_lat,user_long;
-
 
     int PERMISSION_ID = 44;
 
@@ -73,6 +73,8 @@ public class Accepted_Donation_Details extends AppCompatActivity {
     SharedPreferences DonationDetailsSharedPreferences;
 
     private FirebaseFirestore db;
+
+    Double Latitude_u = 0.00, Longitude_u= 0.00;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +104,8 @@ public class Accepted_Donation_Details extends AppCompatActivity {
         donation_address = findViewById( R.id.donation_address );
         collect_donation_btn = findViewById( R.id.collect_donation_btn );
         call_donor_btn = findViewById( R.id.call_donor_btn );
+
+        mapsButton = findViewById( R.id.mapsButton );
 
 
 
@@ -138,10 +142,21 @@ public class Accepted_Donation_Details extends AppCompatActivity {
                         Double lat,longs;
                         lat = Double.valueOf( LatLongDiff[0] );
                         longs = Double.valueOf( LatLongDiff[1] );
-                        Double lat1,longs1;
-                        lat1 = Double.valueOf(user_lat);
-                        longs1 = Double.valueOf( user_long);
 
+                        Log.e("Mesg","Lat 1 = "+lat+"  longs = "+longs);
+                        Log.e("Mesg","User Lat 1 = "+user_lat+"  User longs = "+user_long);
+
+                        Double lat1,longs1;
+//                        lat1 = Double.valueOf(user_lat);
+//                        longs1 = Double.valueOf( user_long);
+                        double defaultLat = 18.531701;
+                        double defaultLong = 73.867027;
+                        lat1 = (user_lat != null && !user_lat.isEmpty()) ? Double.valueOf(user_lat) : defaultLat;
+                        longs1 = (user_long != null && !user_long.isEmpty()) ? Double.valueOf(user_long) : defaultLong;
+
+
+                        Latitude_u = lat;
+                        Longitude_u = longs;
                         String time = getKmFromLatLong(lat1,longs1,lat,longs);
 
                         estTime.setText(time + " Minutes" );
@@ -191,13 +206,40 @@ public class Accepted_Donation_Details extends AppCompatActivity {
 //        } );
 
 
+//        maps_view.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View view) {
+//                Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
+//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                mapIntent.setPackage("com.google.android.apps.maps");
+//                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//                    startActivity(mapIntent);
+//                }
+//                return false;
+//            }
+//        });
+
         call_donor_btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", donorNumber, null)));
-
             }
         } );
+
+
+        mapsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Log.e( "Err",  donorNumber+foodLocation + foodStatus +latLong);
+
+                Uri gmmIntentUri = Uri.parse("google.navigation:q="+Latitude_u.toString()+","+Longitude_u.toString());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+            }
+        });
 
         collect_donation_btn.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -306,7 +348,7 @@ public class Accepted_Donation_Details extends AppCompatActivity {
     // if location is enabled
     private boolean isLocationEnabled() {
         LocationManager locationManager = (LocationManager) getSystemService( Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) && locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
     // If everything is alright then

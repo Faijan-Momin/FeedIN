@@ -40,6 +40,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -50,15 +51,21 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -67,6 +74,7 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,9 +85,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class Donate_Food_Activity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
@@ -108,6 +122,9 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
     public int DonationNo;
     Uri filePath;
 
+//    APIService apiService;
+
+
     private final int PICK_IMAGE_REQUEST = 22;
 
     FirebaseStorage storage;
@@ -116,6 +133,7 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
 
     String user_lat, user_long;
 
+    List<String> tokens_arr ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +145,9 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
 
         // method to get the location
         getLastLocation();
+
+
+//        apiService = Api.Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
 
         UserDataSharedPreferences = getSharedPreferences("UserPreferences",MODE_PRIVATE);
@@ -150,7 +171,7 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
         db = FirebaseFirestore.getInstance();
 
 
-
+        tokens_arr = new ArrayList<>();
         choose_image_btn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,9 +203,94 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
             }
         } );
 
+
+        CollectionReference collectionRef = FirebaseFirestore.getInstance().collection("notifications");
+
+        // Initialize an empty list to store the tokens
+
+        // Fetch the token field from each document in the collection
+        collectionRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DocumentSnapshot document : task.getResult().getDocuments()) {
+                        String token = document.getString("token");
+                        Log.d("TAG", "Token: " + token);
+                        tokens_arr.add(token);
+                    }
+                    // Do something with the tokens array
+                } else {
+                    Log.e("TAG", "Error fetching documents: ", task.getException());
+                }
+            }
+        });
+
+
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(new OnCompleteListener<String>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<String> task) {
+//                        if (!task.isSuccessful()) {
+//                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+//                            return;
+//                        }
+//
+//                        // Get new FCM registration token
+//                        String token = task.getResult();
+//
+//                        Log.d("Mesg","token - > "+token );
+////                        Toast.makeText(MainActivity.this, "token - > "+token, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+
     }
 
-
+//    private void sendNotification(String donor, String location) {
+//
+////        "Food has been donated near you by "+donor+" at "+location;
+//        CollectionReference tokens = FirebaseFirestore.getInstance().collection("notifications");
+////        Task<String> fm = FirebaseMessaging.getInstance().getToken();
+////        Query query = tokens.orderByKey().equalTo(receiver);
+//        query.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+//                    Token token = dataSnapshot.getValue(Token.class);
+//                    Data data = new Data(fuser.getUid(), R.mipmap.ic_launcher, username+": "+msg, "New Message",userid);
+//
+//                    Sender sender = new Sender(data, token.getToken());
+//
+//                    apiService.sendNotification(sender)
+//                            .enqueue(new Callback<MyResponse>() {
+//                                @Override
+//                                public void onResponse(Call<MyResponse> call, retrofit2.Response<MyResponse> response) {
+//                                    if (response.code() == 200 ){
+//                                        if (response.body().success != 1){
+//
+//                                            Toast.makeText(MessageActivity.this, "Failed to notify "+username, Toast.LENGTH_SHORT).show();
+////                                            Toast.makeText(MessageActivity.this, String.valueOf(response.body().success), Toast.LENGTH_SHORT).show();
+//                                        }else {
+////                                            Toast.makeText(MessageActivity.this, "notification sent ", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                }
+//
+//                                @Override
+//                                public void onFailure(Call<MyResponse> call, Throwable t) {
+//                                    Toast.makeText(MessageActivity.this, t.getLocalizedMessage().toString(), Toast.LENGTH_SHORT).show();
+//
+//                                }
+//                            });
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+//
 
 
     private void SelectImage()
@@ -239,6 +345,7 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
     {
 
 
+
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.setCancelable( false );
@@ -252,7 +359,6 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
         LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("E, MMM dd yyyy HH:mm:ss");
         String timeStamp = myDateObj.format(myFormatObj).toString();
-
         if(!userid.isEmpty()) {
 
 
@@ -283,7 +389,6 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
 
                         String BestBefore = date_time_picker.getText().toString();
 
-
                         if (filePath != null) {
 
                             // Code for showing progressDialog while uploading
@@ -300,6 +405,14 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
                                         @Override
                                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
+//                                            Sends Notification to all users
+//                                            for(String toks : tokens_arr){
+//                                                System.out.println(toks + "  -- Food Donated by "+username+" Near your location");
+//                                                FCMSend.pushNotification(Donate_Food_Activity.this,
+//                                                        toks,
+//                                                        "Food Donated by "+username+" Near your location",
+//                                                        "Tap to see the donation details.");
+//                                            }
                                             ref.getDownloadUrl().addOnSuccessListener( new OnSuccessListener<Uri>() {
                                                 @Override
                                                 public void onSuccess(Uri uri) {
@@ -332,6 +445,12 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
                                                             .addOnSuccessListener( Donate_Food_Activity.this , new OnSuccessListener<Void>() {
                                                                 @Override
                                                                 public void onSuccess(Void unused) {
+//                                                                    sendNotification(username, ApiResponse.get( "address" ));
+
+
+
+
+
                                                                     Toast.makeText( Donate_Food_Activity.this , "Success" , Toast.LENGTH_SHORT ).show();
                                                                 }
                                                             } )
@@ -489,32 +608,49 @@ public class Donate_Food_Activity extends AppCompatActivity implements DatePicke
         }
     }
 
+    public static String convertDateFormat(String inputDate) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("M-dd-yyyy HH:mm");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("E, MMM dd yyyy HH:mm:ss");
+        try {
+            Date date = inputFormat.parse(inputDate);
+            String formattedDate = outputFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null; // Return null in case of an exception
+        }
+    }
+
 
     //    Date and Time Set
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         myYear = year;
-        myday = day;
+        myday = dayOfMonth; // Fix this line to use dayOfMonth instead of day
         myMonth = month;
         Calendar c = Calendar.getInstance();
-        hour = c.get(Calendar.HOUR);
+        hour = c.get(Calendar.HOUR_OF_DAY); // Use HOUR_OF_DAY for 24-hour format
         minute = c.get(Calendar.MINUTE);
         TimePickerDialog timePickerDialog = new TimePickerDialog(Donate_Food_Activity.this, Donate_Food_Activity.this, hour, minute, DateFormat.is24HourFormat(this));
         timePickerDialog.show();
     }
+
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         myHour = hourOfDay;
         myMinute = minute;
 
+        // Create a Calendar object with the selected date and time
+        Calendar selectedDateTime = Calendar.getInstance();
+        selectedDateTime.set(myYear, myMonth, myday, myHour, myMinute);
 
-        String myTime = myMonth+"-"+myday+"-"+myYear+" "+myHour+":"+myMinute;
+        // Format the selected date and time according to "EEE, MMM dd yyyy HH:mm"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM dd yyyy HH:mm", Locale.US);
+        String formattedDateTime = dateFormat.format(selectedDateTime.getTime());
 
-
-        date_time_picker.setText(myTime);
-
+        // Display the formatted date and time (you can replace this with your desired action)
+        date_time_picker.setText(formattedDateTime);
     }
-
 
 
     @SuppressLint("MissingPermission")

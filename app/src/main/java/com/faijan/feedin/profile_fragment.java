@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,10 @@ public class profile_fragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     TextView username, user_mobile, user_email, total_flames,total_donation;
+
+    ImageView profile_image;
     SharedPreferences UserDataSharedPreferences;
+    SharedPreferences.Editor UserDataSharedPreferencesEditor;
 
     FirebaseAuth auth;
 
@@ -66,10 +70,15 @@ public class profile_fragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate( R.layout.fragment_profile_fragment , container , false );
         UserDataSharedPreferences = getActivity().getSharedPreferences("UserPreferences",MODE_PRIVATE);
+        UserDataSharedPreferencesEditor = UserDataSharedPreferences.edit();
 
         String pref_email = UserDataSharedPreferences.getString( "email", "" );
         String pref_name = UserDataSharedPreferences.getString( "name", "" );
         String pref_uid = UserDataSharedPreferences.getString( "uid", "" );
+        String pref_mobile = UserDataSharedPreferences.getString( "mobile", "" );
+        String pref_totalFlames = UserDataSharedPreferences.getString( "totalFlames", "" );
+        String pref_totalDonation = UserDataSharedPreferences.getString( "totalDonation", "" );
+
 
         username = rootView.findViewById( R.id.username );
         user_mobile = rootView.findViewById( R.id.mobile );
@@ -77,10 +86,27 @@ public class profile_fragment extends Fragment {
         total_flames = rootView.findViewById( R.id.total_flames );
         total_donation = rootView.findViewById( R.id.total_donation );
 
+        profile_image = rootView.findViewById(R.id.profile_image);
+
+
         db = FirebaseFirestore.getInstance();
         auth =FirebaseAuth.getInstance();
 
         String uid = auth.getCurrentUser().getUid().toString();
+
+
+        if((pref_name.isEmpty() && pref_email.isEmpty()) && (pref_email.equals("") && pref_name.equals(""))){
+
+        }else {
+            username.setText( pref_name );
+            user_email.setText( pref_email );
+            total_flames.setText( pref_totalFlames );
+            total_donation.setText( pref_totalDonation );
+            user_mobile.setText( pref_mobile );
+
+        }
+
+
 
 
         if (uid.equals( pref_uid )){
@@ -99,16 +125,23 @@ public class profile_fragment extends Fragment {
                             String totalFlames =  snapshot.get( "totalFlames" ).toString();
 
                             username.setText( userName );
+                            String mobile_no;
                             if (mobile.contentEquals( "+91" ) || mobile.length()>= 11){
-                                String mobile_no = mobile.substring(mobile.length() - 10);
+                                mobile_no = mobile.substring(mobile.length() - 10);
                                 user_mobile.setText( mobile_no );
                             }else {
-                                user_mobile.setText( "+91-"+mobile );
+                                mobile_no ="+91-"+mobile;
+                                user_mobile.setText( mobile_no );
                             }
                             user_email.setText( email );
                             total_flames.setText( totalFlames );
                             total_donation.setText( totalDonation );
 
+                            UserDataSharedPreferencesEditor.putString("totalFlames", totalFlames);
+                            UserDataSharedPreferencesEditor.putString("totalDonation",totalDonation);
+                            UserDataSharedPreferencesEditor.putString("mobile",mobile_no);
+                            UserDataSharedPreferencesEditor.commit();
+                            UserDataSharedPreferencesEditor.apply();
                         }
                     } )
                     .addOnFailureListener( new OnFailureListener() {
